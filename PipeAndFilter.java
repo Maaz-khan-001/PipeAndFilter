@@ -12,6 +12,7 @@ public class PipeAndFilter {
         filters.add(PipeAndFilter::squareNumbers);
         filters.add(PipeAndFilter::filterNumbersGreaterThanTen);
         filters.add(PipeAndFilter::filterNumbersGreaterThan50);
+        filters.add(PipeAndFilter::cubeNumbers);
         // Process the input through the pipeline
         List<Integer> result = processPipeline(input, filters);
         // Output the result
@@ -53,6 +54,7 @@ public class PipeAndFilter {
                 .collect(Collectors.toList());
     }
 
+
     private static List<Integer> filterNumbersGreaterThan50(List<Integer> input) {
         var greater50 = input.stream()
                 .filter(n -> n > 50)
@@ -64,6 +66,12 @@ public class PipeAndFilter {
     private static void PrintResult(String filerType, List<Integer> greater50) {
 
         System.out.println(filerType + " " + greater50.toString());
+    }
+
+    private static List<Integer> cubeNumbers(List<Integer> input) {
+        return input.stream()
+                .map(n -> n * n * n)
+                .collect(Collectors.toList());
     }
 
 }
